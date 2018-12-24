@@ -6,7 +6,7 @@
 namespace task {
 namespace internal {
 
-typedef std::function<void(void)> work;
+typedef std::function<void(void)> Work;
 
 }
 }

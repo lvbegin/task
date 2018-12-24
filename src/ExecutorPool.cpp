@@ -1,4 +1,4 @@
-#include "executorPool.h"
+#include "ExecutorPool.h"
 #include <algorithm>
 
 namespace task {
@@ -13,7 +13,7 @@ ExecutorPool::ExecutorPool(ExecutorPool &&pool) {
 
 ExecutorPool::~ExecutorPool() = default;     
 
-void ExecutorPool::newWork(work t) { queue->put(t); }
+void ExecutorPool::newWork(Work t) { queue->put(t); }
 
 }
 }

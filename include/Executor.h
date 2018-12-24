@@ -1,7 +1,7 @@
 #ifndef EXECUTOR_H__
 #define EXECUTOR_H__
 
-#include "work.h"
+#include "Work.h"
 #include "ExecutorInterface.h"
 
 #include <thread>
@@ -13,7 +13,7 @@ namespace internal {
 
 class WorkReader {
     public:
-        virtual work get(std::function<bool(void)> pred = []() {return false; }) = 0;
+        virtual Work get(std::function<bool(void)> pred = []() {return false; }) = 0;
         virtual void notifyPred() = 0;
         virtual ~WorkReader() = default;
 
@@ -22,10 +22,10 @@ class WorkReader {
         WorkReader() = default;
 };
 
-class executor : public ExecutorInterface {
+class Executor : public ExecutorInterface {
     public:
-        executor(WorkReader &channel);
-        ~executor();
+        Executor(WorkReader &channel);
+        ~Executor();
     private:
         bool terminated;
         WorkReader &channel;

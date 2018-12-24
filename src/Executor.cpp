@@ -1,4 +1,4 @@
-#include "executor.h"
+#include "Executor.h"
 
 namespace task {
 namespace internal {
@@ -15,14 +15,14 @@ static void thread_body(WorkReader *channel, bool *terminated) noexcept {
     }
 }
 
-executor::executor(WorkReader &channel) : terminated(false), channel(channel), t(thread_body, &channel, &this->terminated) { }
+Executor::Executor(WorkReader &channel) : terminated(false), channel(channel), t(thread_body, &channel, &this->terminated) { }
 
-executor::~executor() { 
+Executor::~Executor() { 
     stop();
     t.join(); 
 }
 
-void executor::stop() { 
+void Executor::stop() { 
     terminated = true; 
     channel.notifyPred();
 }

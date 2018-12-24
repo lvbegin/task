@@ -1,9 +1,9 @@
-#include "executor.h"
-#include "executorPool.h"
-#include "workQueue.h"
-#include "task.h"
-#include <stdlib.h>
+#include "Executor.h"
+#include "ExecutorPool.h"
+#include "WorkQueue.h"
+#include "Task.h"
 
+#include <stdlib.h>
 #include <future>
 #include <functional>
 #include <algorithm>
@@ -29,7 +29,7 @@ static int test_promise() {
 
 static int test_work() {
     task::internal::WorkQueue c;
-    task::internal::executor e(c);
+    task::internal::Executor e(c);
     return 0;
 }
 
@@ -49,9 +49,9 @@ static int test_WorkQueue() {
 static int test_ExecutorPool() {
     auto p = std::make_unique<task::internal::WorkQueue>();
     task::internal::Executors executors;
-    executors.emplace_back(std::make_unique<task::internal::executor>(*p));
-    executors.emplace_back(std::make_unique<task::internal::executor>(*p));
-    executors.emplace_back(std::make_unique<task::internal::executor>(*p));
+    executors.emplace_back(std::make_unique<task::internal::Executor>(*p));
+    executors.emplace_back(std::make_unique<task::internal::Executor>(*p));
+    executors.emplace_back(std::make_unique<task::internal::Executor>(*p));
 
     task::internal::ExecutorPool pool(std::move(p), std::move(executors));
     bool called = false;

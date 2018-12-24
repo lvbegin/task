@@ -1,6 +1,7 @@
-#include "task.h"
-#include "workQueue.h"
-#include "executorPool.h"
+#include "Task.h"
+#include "WorkQueue.h"
+#include "Executor.h"
+#include "ExecutorPool.h"
 
 #include <mutex>
 
@@ -14,7 +15,7 @@ static void initialize() {
     auto p = std::make_unique<internal::WorkQueue>();
     internal::Executors executors;
     for (unsigned int i = 0; i < numberExecutor; i++)
-        executors.emplace_back(std::make_unique<internal::executor>(*p));
+        executors.emplace_back(std::make_unique<internal::Executor>(*p));
 
     pool.reset(new internal::ExecutorPool(std::move(p), std::move(executors)));
 }

@@ -1,8 +1,8 @@
 #ifndef WORK_QUEUE_H__
 #define WORK_QUEUE_H__
 
-#include "executor.h"
-#include "executorPool.h"
+#include "Executor.h"
+#include "ExecutorPool.h"
 #include <queue>
 #include <mutex>
 #include <condition_variable>
@@ -15,13 +15,13 @@ class WorkQueue : public WorkReader, public WorkWriter {
         WorkQueue();
         ~WorkQueue();
 
-        void put(work t);
-        work get(std::function<bool(void)> pred = [] (){ return false;});
+        void put(Work t);
+        Work get(std::function<bool(void)> pred = [] (){ return false;});
         void notifyPred();
     private:
         std::condition_variable condition;
         std::mutex m;
-        std::queue<work> q;
+        std::queue<Work> q;
 };
 
 }

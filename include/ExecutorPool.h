@@ -1,7 +1,7 @@
 #ifndef EXECUTOR_POOL_H__
 #define EXECUTOR_POOL_H__
 
-#include "work.h"
+#include "Work.h"
 #include "ExecutorInterface.h"
 
 #include <vector>
@@ -12,7 +12,7 @@ namespace internal {
 
 class WorkWriter {
     public: 
-        virtual void put(work w) = 0;
+        virtual void put(Work w) = 0;
         virtual ~WorkWriter() = default;
     protected:
         WorkWriter() = default;
@@ -26,7 +26,7 @@ class ExecutorPool {
         ExecutorPool(ExecutorPool &&pool);
         ~ExecutorPool();
         
-        void newWork(work w);
+        void newWork(Work w);
     private:
         std::unique_ptr<WorkWriter> queue;
         Executors executors;

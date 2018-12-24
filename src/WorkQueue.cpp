@@ -1,4 +1,4 @@
-#include "workQueue.h"
+#include "WorkQueue.h"
 
 namespace task {
 namespace internal {
@@ -7,13 +7,13 @@ WorkQueue::WorkQueue() = default;
 
 WorkQueue::~WorkQueue() = default;
 
-void WorkQueue::put(work w) {
+void WorkQueue::put(Work w) {
     std::unique_lock<std::mutex> l(m);
     q.push(w);
     condition.notify_one();
 }
 
-work WorkQueue::get(std::function<bool(void)> pred) {
+Work WorkQueue::get(std::function<bool(void)> pred) {
     std::unique_lock<std::mutex> l(m);
     bool predicate_is_true = false;
     condition.wait(l, [&predicate_is_true, pred, this]() {  
