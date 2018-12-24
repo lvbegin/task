@@ -1,8 +1,6 @@
 #ifndef TASK_H__
 #define TASK_H__
 
-#include "executorPool.h"
-
 #include <future>
 #include <iostream>
 
