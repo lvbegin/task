@@ -11,10 +11,10 @@ static unsigned int numberExecutor = 5;
 
 static std::unique_ptr<internal::ExecutorPool> pool;
 
-static void initialize() {
+static void initialize(unsigned int size) {
     auto p = std::make_unique<internal::WorkQueue>();
     internal::Executors executors;
-    for (unsigned int i = 0; i < numberExecutor; i++)
+    for (unsigned int i = 0; i < size; i++)
         executors.emplace_back(std::make_unique<internal::Executor>(*p));
 
     pool.reset(new internal::ExecutorPool(std::move(p), std::move(executors)));
@@ -22,7 +22,7 @@ static void initialize() {
 
 void sendWorkToPool(std::function<void(void)> &&w) {
     static std::once_flag flag;
-    std::call_once(flag, initialize);
+    std::call_once(flag, initialize, numberExecutor);
     pool->newWork(w);
 }
 
