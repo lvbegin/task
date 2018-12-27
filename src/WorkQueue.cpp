@@ -9,7 +9,7 @@ WorkQueue::~WorkQueue() = default;
 
 void WorkQueue::put(Work w) {
     std::unique_lock<std::mutex> l(m);
-    q.push(w);
+    q.push(std::move(w));
     condition.notify_one();
 }
 
