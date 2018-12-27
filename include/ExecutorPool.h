@@ -26,7 +26,7 @@ class ExecutorPool {
         ExecutorPool(ExecutorPool &&pool);
         ~ExecutorPool();
         
-        void newWork(Work w);
+        void newWork(Work w) const;
     private:
         std::unique_ptr<WorkWriter> queue;
         Executors executors;

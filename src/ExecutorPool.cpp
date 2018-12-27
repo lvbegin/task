@@ -13,7 +13,7 @@ ExecutorPool::ExecutorPool(ExecutorPool &&pool) {
 
 ExecutorPool::~ExecutorPool() = default;     
 
-void ExecutorPool::newWork(Work t) { queue->put(t); }
+void ExecutorPool::newWork(Work t) const { queue->put(t); }
 
 }
 }
