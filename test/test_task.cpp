@@ -124,13 +124,41 @@ static int test_set_worker_pool_size_fails() {
     return 0;
 }
 
+static int nbFailure = 0;
+
+#define EXECUTE_TEST(t) executeTest(t,#t)
+
+
+static void executeTest(std::function<int(void)> test, std::string testName)
+{
+    std::cout << "start " << testName << "." << std::endl;
+    int result = 0;
+    try {
+        result = test();
+    } catch(std::exception &e) {
+        result = 1;
+    }
+    std::cout << "end " << testName << ": " << std::flush;
+    if (result == 0) {
+        std::cout << "OK" << std::endl;
+    } else {
+        nbFailure++;
+        std::cout << "KO" << std::endl;
+    }
+}
+
+int testsResult()
+{
+    return (nbFailure == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
+}
+
 int main() {
-    test_work();
-    test_promise();
-    test_WorkQueue();
-    test_ExecutorPool();
-    test_task();
-    test_task_that_raise_exception();
-    test_set_worker_pool_size_fails();
-    return EXIT_SUCCESS;
+    EXECUTE_TEST(test_work);
+    EXECUTE_TEST(test_promise);
+    EXECUTE_TEST(test_WorkQueue);
+    EXECUTE_TEST(test_ExecutorPool);
+    EXECUTE_TEST(test_task);
+    EXECUTE_TEST(test_task_that_raise_exception);
+    EXECUTE_TEST(test_set_worker_pool_size_fails);
+    return testsResult();
 }
