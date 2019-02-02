@@ -1,0 +1,13 @@
+stamp-h1
+*.log
+Makefile
+Makefile.in
+configure
+config.h*
+config.status
+libtask*
+task_tests*
+src/*.o
+test/*.o
+*/.deps*
+*/.dirstamp
