@@ -20,5 +20,7 @@ AM_INIT_AUTOMAKE()
 AC_CHECK_HEADER_STDBOOL
 
 # Checks for library functions.
+AX_CHECK_LINK_FLAG(-pthread, AC_SUBST([PTHREAD], [-pthread]), AC_SUBST([PTHREAD],[])) 
+
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT

@@ -9,4 +9,4 @@ TESTS=task_tests
 
 task_tests_SOURCES=test/test_task.cpp
 task_tests_LDADD=libtask.a 
-task_tests_LDFLAGS=-pthread
+task_tests_LDFLAGS=$(PTHREAD)
