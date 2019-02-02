@@ -31,7 +31,6 @@
 #include "WorkQueue.h"
 #include "Task.h"
 
-#include <stdlib.h>
 #include <future>
 #include <functional>
 #include <algorithm>
