@@ -3,7 +3,7 @@ instdir=/usr/local/lib
 
 inst_LIBRARIES=libtask.a
 libtask_a_SOURCES=src/Executor.cpp src/ExecutorPool.cpp src/Task.cpp src/WorkQueue.cpp
-
+libtask_a_CXXFLAGS=$(DEFAULTCXXFLAGS)
 check_PROGRAMS=task_tests
 TESTS=task_tests
 
