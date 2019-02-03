@@ -18,11 +18,11 @@ AM_INIT_AUTOMAKE()
 # Checks for header files.
 
 # Checks for typedefs, structures, and compiler characteristics.
-AC_CHECK_HEADER_STDBOOL
-
-# Checks for library functions.
 AX_CHECK_LINK_FLAG(-pthread, AC_SUBST([PTHREAD], [-pthread]), AC_SUBST([PTHREAD],[])) 
 AX_CHECK_LINK_FLAG(-O3, AC_SUBST([DEFAULTCXXFLAGS], [-O3]), AC_SUBST([DEFAULTCXXFLAGS], [])) 
+
+
+# Checks for library functions.
 
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
