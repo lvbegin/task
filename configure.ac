@@ -9,6 +9,8 @@ AM_INIT_AUTOMAKE([subdir-objects])
 AC_CONFIG_SRCDIR([config.h.in])
 AC_CONFIG_HEADERS([config.h])
 AC_PROG_RANLIB
+AC_ENABLE_SHARED
+LT_INIT
 
 # Checks for programs.
 AC_PROG_CXX

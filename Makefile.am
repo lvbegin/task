@@ -7,6 +7,9 @@ libtask_a_CXXFLAGS=$(DEFAULTCXXFLAGS)
 check_PROGRAMS=task_tests
 TESTS=task_tests
 
+lib_LTLIBRARIES=libtask.la
+libtask_la_SOURCES=src/Executor.cpp src/ExecutorPool.cpp src/Task.cpp src/WorkQueue.cpp
+libtask_la_CXXFLAGS=$(DEFAULTCXXFLAGS)
 task_tests_SOURCES=test/test_task.cpp
 task_tests_LDADD=libtask.a 
 task_tests_LDFLAGS=$(PTHREAD)
