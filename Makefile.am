@@ -2,7 +2,7 @@ AM_CPPFLAGS=-I$(top_srcdir)/include
 instdir=/usr/local/lib
 
 inst_LIBRARIES=libtask.a
-inst_HEADERS=include/Task.h
+pkginclude_HEADERS=include/Task.h
 noinst_HEADERS=include/Executor.h include/ExecutorInterface.h include/ExecutorPool.h include/Work.h include/WorkQueue.h
 libtask_a_SOURCES=src/Executor.cpp src/ExecutorPool.cpp src/Task.cpp src/WorkQueue.cpp
 libtask_a_CXXFLAGS=$(DEFAULTCXXFLAGS) $(CXXSTANDARD)
