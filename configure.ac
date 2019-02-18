@@ -22,9 +22,8 @@ AM_INIT_AUTOMAKE()
 # Checks for typedefs, structures, and compiler characteristics.
 AX_CHECK_LINK_FLAG(-pthread, AC_SUBST([PTHREAD], [-pthread]), AC_SUBST([PTHREAD],[])) 
 AX_CHECK_LINK_FLAG(-O3, AC_SUBST([DEFAULTCXXFLAGS], [-O3]), AC_SUBST([DEFAULTCXXFLAGS], [])) 
-AX_CHECK_COMPILE_FLAG([-std=c++14], AC_SUBST([CXXSTANDARD], [-std=c++14]), AC_SUBST([CXXSTANDARD], []))
 
 # Checks for library functions.
-
+AX_CXX_COMPILE_STDCXX_14([noext],[mandatory])
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
