@@ -36,7 +36,9 @@ namespace task {
 
 void setWorkPoolSize(unsigned int size);
 
+namespace internal {
 extern void sendWorkToPool(std::function<void(void)> &&w);
+}
 
 template <class t>
 std::future<t> TASK(std::function<t (void)> task) {
@@ -54,7 +56,7 @@ std::future<t> TASK(std::function<t (void)> task) {
             } 
         }
     }; 
-    sendWorkToPool(std::move(w));
+    internal::sendWorkToPool(std::move(w));
     return promise->get_future();
 }
 

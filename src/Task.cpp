@@ -39,6 +39,14 @@ static unsigned int numberExecutor = 5;
 
 static std::unique_ptr<internal::ExecutorPool> pool;
 
+void setWorkPoolSize(unsigned int size) {
+    if (nullptr != pool)
+        throw std::runtime_error("worker pool already initialized.");
+    numberExecutor = size;
+}
+
+namespace internal {
+
 static void initialize(unsigned int size) {
     auto p = std::make_unique<internal::WorkQueue>();
     internal::Executors executors;
@@ -54,10 +62,5 @@ void sendWorkToPool(std::function<void(void)> &&w) {
     pool->newWork(w);
 }
 
-void setWorkPoolSize(unsigned int size) {
-    if (nullptr != pool)
-        throw std::runtime_error("worker pool already initialized.");
-    numberExecutor = size;
 }
-
 }
