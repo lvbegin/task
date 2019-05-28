@@ -1,0 +1,12 @@
+A small library to provide a basic API for tasks.
+A task is simply a std::function that takes no argument and returns a type 't'.
+To start a task, simply call the template 'TASK' with the std::function as unique parameter. 
+That 'TASK' template returns a std::future<t> object.
+Thus, the sychronization mechanisms with tasks are the ones provided by std::future. 
+
+Once the 'TASK' template is called, the task is started as soon as possible.
+Since the library is based on a pool of worker threads executing the tasks, this may be include some delay for getting a worker thread becoming available for a new task.
+By default, the pool is composed o 5 worker threads. 
+However,it is possible to modify the size of the pool by calling the function 'setWorkPoolSize'.
+The call to the function 'setWorkPoolSize' must occur before a first task execution; that is before the firt call to the template 'TASK'.
+The goal of this function is thus initialization rather than changing configuration on-the-fly.
