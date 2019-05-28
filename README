@@ -10,3 +10,12 @@ By default, the pool is composed o 5 worker threads.
 However,it is possible to modify the size of the pool by calling the function 'setWorkPoolSize'.
 The call to the function 'setWorkPoolSize' must occur before a first task execution; that is before the firt call to the template 'TASK'.
 The goal of this function is thus initialization rather than changing configuration on-the-fly.
+
+
+The package is composed of:
+- a header file 'task.h'
+- a static library
+- a dynamic library
+- a test suite to verify that everything is working fine on the target platform.
+
+The installation procedure is the classical  one: in the root directory of the sources, calls ./configure && make && make check && make install.
