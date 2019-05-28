@@ -14,7 +14,7 @@ AC_ENABLE_SHARED
 LT_INIT
 
 # Checks for programs.
-AC_PROG_CXX
+AC_PROG_CXX([g++ gcc clang++ clang])
 AC_LANG([C++])
 # Checks for libraries.
 AM_INIT_AUTOMAKE()
